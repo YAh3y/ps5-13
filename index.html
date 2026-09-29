@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title> 07714434273 محمد خالد للشروحات</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#070d1b">
+  <title>مكتب يحيى للإلكترونيات | PS5</title>
+  <style>
+  *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#070d1b;color:#eaf4ff;font-family:Tahoma,Arial,sans-serif}body:before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse at 85% 10%,#174b9670,transparent 50%),radial-gradient(ellipse at 0% 90%,#006dd030,transparent 45%);pointer-events:none}.shell{position:relative;max-width:1040px;margin:0 auto;padding:30px 20px 45px}.top{display:flex;justify-content:space-between;align-items:center;gap:15px;border-bottom:1px solid #4671a74f;padding-bottom:20px}.brand{font-weight:bold;letter-spacing:1px;color:#82d5ff}.pill{border:1px solid #3d9fff;background:#10284b;border-radius:50px;padding:9px 17px;font-size:12px}.hero{margin:55px 0 32px;text-align:center}.eyebrow{color:#59c9ff;font-size:13px;letter-spacing:3px}.hero h1{font-size:clamp(32px,6vw,68px);margin:12px 0 10px;text-shadow:0 0 36px #1889fa77}.hero h1 span{color:#57caff}.hero p{color:#b5c9e4;line-height:1.8}.line{height:3px;width:125px;margin:24px auto;background:linear-gradient(90deg,transparent,#53c9ff,transparent)}.panel{background:linear-gradient(145deg,#132544ec,#0b1429ef);border:1px solid #4179b880;border-radius:20px;box-shadow:0 25px 70px #0007;padding:25px}.panel-header{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:20px}.panel-header h2{margin:0;font-size:20px}.status{font-size:12px;color:#83f5c6;background:#153e3d;border:1px solid #368f78;padding:8px 12px;border-radius:30px}#console{height:340px;overflow:auto;background:#040b17;border:1px solid #284b75;border-radius:12px;padding:18px;font:13px/1.8 Consolas,monospace;direction:ltr;text-align:left;overflow-wrap:anywhere;color:#a8d9ff}#console div{border-bottom:1px solid #16283d;padding:3px 0}#console div:last-child{color:#7bffcd}.foot{text-align:center;color:#7e98b9;font-size:12px;margin-top:25px;line-height:1.8}@media(max-width:550px){.shell{padding:20px 12px}.hero{margin:38px 0}.panel{padding:15px}#console{height:380px}}
+  </style>
+</head>
+<body>
+  <main class="shell" dir="rtl">
+    <header class="top"><div class="brand">YAHAY OFFICE</div><div class="pill">PLAYSTATION 5</div></header>
+    <section class="hero"><div class="eyebrow">PS5 • OFFLINE EDITION</div><h1>مكتب <span>يحيى</span><br>للإلكترونيات</h1><p>واجهة خاصة للبلايستيشن 5<br>تصميم خفيف • تشغيل تلقائي • دعم التخزين أوفلاين</p><div class="line"></div></section>
+    <section class="panel"><div class="panel-header"><h2>حالة التشغيل</h2><span class="status" id="offline-status">جاري التحقق من الكاش</span></div><div id="console" aria-live="polite"></div></section>
+    <footer class="foot">مكتب يحيى للإلكترونيات<br>بغداد – المشتل – شارع المطبك</footer>
+  </main>
+  <script src="./src/firmware.js"></script>
+  <script src="./src/main.js"></script>
+  <script src="./src/rop.js"></script>
+  <script src="./src/utils/syscalls.js"></script>
+  <script type="module" src="./src/site.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js", { scope: "/ps5-13/" }).then(async () => {
+          const status = document.getElementById("offline-status");
+          if (navigator.serviceWorker.controller) status.textContent = "الكاش مفعّل";
+          navigator.serviceWorker.ready.then(() => { status.textContent = "خدمة الأوفلاين جاهزة"; });
+        }).catch(() => { document.getElementById("offline-status").textContent = "الكاش غير متاح"; });
+      });
+    }
+  </script>
+</body>
+</html>
